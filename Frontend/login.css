@@ -1,0 +1,98 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(145deg, #0f0f14, #1a1a24);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+.page {
+  width: 100%;
+  max-width: 420px;
+}
+
+/* ===== HEADER ===== */
+.header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.header h1 {
+  font-size: 2.4rem;
+  margin-bottom: 6px;
+}
+
+.header p {
+  font-size: 14px;
+  color: #bdbdd6;
+}
+
+.header a {
+  color: #6c6cff;
+  text-decoration: none;
+}
+
+.header a:hover {
+  text-decoration: underline;
+}
+
+/* ===== FORM CARD ===== */
+form {
+  background: #1f1f2b;
+  padding: 28px;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+}
+
+form > div {
+  margin-bottom: 14px;
+}
+
+input {
+  width: 100%;
+  padding: 14px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  background: #2a2a3a;
+  color: #fff;
+  font-size: 14px;
+}
+
+input::placeholder {
+  color: #9a9ab0;
+}
+
+form a {
+  font-size: 13px;
+  color: #9fa0ff;
+  text-decoration: none;
+}
+
+form a:hover {
+  text-decoration: underline;
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 12px;
+  border-radius: 12px;
+  border: none;
+  background: #6c6cff;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #5858e6;
+}
