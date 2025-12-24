@@ -1,0 +1,18 @@
+import os
+from dotenv import load_dotenv
+
+
+load_dotenv()
+
+class Config:
+    SECRET_KEY = os.getenv('JWT_SECRET_KEY')
+    SUPABASE_URL = os.getenv('SUPABASE_URL')
+    SUPABASE_KEY = os.getenv('SUPABASE_KEY')
+    JWT_SECRET_KEY = os.getenv('JWT_SECRET_KEY')
+    JWT_ALGORITHM = 'HS256'
+    JWT_ACCESS_TOKEN_EXPIRES = 3600  
+    GOOGLE_CLIENT_ID = os.getenv('GOOGLE_CLIENT_ID')
+    GOOGLE_CLIENT_SECRET = os.getenv('GOOGLE_CLIENT_SECRET')
+    REDIRECT_URI = os.getenv('REDIRECT_URI')
+    CORS_ORIGINS = ['http://127.0.0.1:5500', 'http://localhost:5500']
+
