@@ -23,12 +23,18 @@
                 <input type="password" id="password" name="password" placeholder="password" required>
             </div>
 
-            <div>
-                <a href="">Forgot Password?</a>
+           <div>
+                <button class="google-btn" onclick="googleLogin()">
+                    <img src="google.png" alt="Google" />
+                    <span>Sign in with Google</span>
+                </button>
+
             </div>
 
-            <button type="submit">Login</button>
+
+            <button type="button" onclick="login()">Login</button>
         </form>
+        <script src="script.js"></script>
 </body>
 
 </html>
