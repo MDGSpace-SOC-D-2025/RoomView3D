@@ -296,13 +296,7 @@ def google_callback():
 @auth_bp.route('/me', methods=['GET'])
 @token_required
 def get_current_user(user_id):
-    """
-    Get current logged-in user's information
-    
-    Requires: Authorization header with Bearer token
-    
-    This demonstrates how to use @token_required decorator
-    """
+
     try:
         user = get_user_by_id(user_id)
         
@@ -333,11 +327,7 @@ def get_current_user(user_id):
 @auth_bp.route('/verify', methods=['GET'])
 @token_required
 def verify_token_route(user_id):
-    """
-    Verify if token is valid
-    
-    Frontend can call this to check if user is still logged in
-    """
+
     return jsonify({
         'valid': True,
         'userId': user_id
