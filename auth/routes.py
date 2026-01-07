@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify, redirect
+from flask import Blueprint, request, jsonify, redirect, render_template
 from auth.utils import (
     hash_password, 
     verify_password, 
@@ -13,7 +13,7 @@ from auth.google_oauth import (
     get_google_user_info,
     verify_google_id_token
 )
-from models.users import (
+from database.users import (
     create_user_with_password,
     create_user_with_google,
     get_user_by_email,
@@ -53,6 +53,9 @@ def token_required(f):
 
 
 # TRADITIONAL AUTH ROUTES 
+@auth_bp.route("/signup", methods=["GET"])
+def signup_page():
+    return render_template("signup.html")
 
 @auth_bp.route('/signup', methods=['POST'])
 def signup():
@@ -129,6 +132,9 @@ def signup():
             'error': 'Internal server error'
         }), 500
 
+@auth_bp.route("/login", methods=["GET"])
+def login_page():
+    return render_template("Login.html")
 
 @auth_bp.route('/login', methods=['POST'])
 def login():
@@ -211,7 +217,7 @@ def google_callback():
         
         # Exchange code for tokens
         token_data = exchange_code_for_token(code)
-        
+
         if 'error' in token_data:
             return jsonify({
                 'error': 'Failed to get access token',
@@ -246,7 +252,7 @@ def google_callback():
             token = create_access_token(user['id'], user['email'])
             # Frontend will extract token from URL and store it
             frontend_url = f'http://127.0.0.1:5500/Frontend/index.html?token={token}'
-            return redirect(frontend_url)
+            return redirect(frontend_url) 
         
         # Check if user exists by email (signed up with email/password)
         user = get_user_by_email(email)

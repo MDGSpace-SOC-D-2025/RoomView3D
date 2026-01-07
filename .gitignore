@@ -1,4 +1,6 @@
 node_modules/
 .env
-__pycache__/
 *.pyc
+cloudflare.env
+venv/
+__pycache__/

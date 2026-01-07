@@ -1,31 +1,20 @@
-from flask import Flask, render_template, request # type: ignore
+from flask import Flask, render_template
+from auth.routes import auth_bp
+from ml.ml_routes import ml_bp 
+from flask_cors import CORS 
+from config import Config
 
-app = Flask(__name__)
 
-@app.route('/')
-def home():
-    return render_template('index.html')
+def create_app():
+    app = Flask(__name__)
+    CORS(app)
+    app.config['SECRET_KEY'] = Config.FLASK_SECRET_KEY
+    app.register_blueprint(auth_bp)
+    app.register_blueprint(ml_bp)
+    return app
 
-@app.route('/about')
-def about():
-    return render_template('about.html') 
 
-@app.route('/login',methods =['GET','POST'])
-def login():
-    if request.method == 'POST':
-        username = request.form['username']
-        password = request.form['password']
-        print (f"Username: {username}, Password: {password}")
-    return render_template('login.html') 
+app = create_app()
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run(debug=True)
-
-
-
-
-
-
-
-
-    

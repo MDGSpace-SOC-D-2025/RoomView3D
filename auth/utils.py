@@ -39,14 +39,12 @@ def verify_token(token):
         )
         return payload
     except jwt.ExpiredSignatureError:
-        # Token has expired
         return None
     except jwt.InvalidTokenError:
-        # Token is invalid
         return None
 
 def validate_password_strength(password):
-    import re
+    import re 
     
     if len(password) < 8:
         return False, "Password must be at least 8 characters"
@@ -66,3 +64,4 @@ def validate_email_format(email):
     import re
     pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
     return re.match(pattern, email) is not None
+

@@ -15,4 +15,11 @@ class Config:
     GOOGLE_CLIENT_SECRET = os.getenv('GOOGLE_CLIENT_SECRET')
     REDIRECT_URI = os.getenv('REDIRECT_URI')
     CORS_ORIGINS = ['http://127.0.0.1:3000', 'http://localhost:5500']
+    FLASK_SECRET_KEY = os.getenv('SECRET_KEY')
+    R2_ACCESS_KEY_ID = os.getenv('R2_ACCESS_KEY_ID')
+    R2_SECRET_ACCESS_KEY = os.getenv('R2_SECRET_ACCESS_KEY')
+    R2_ENDPOINT_URL = os.getenv('R2_ENDPOINT_URL')
+    R2_PUBLIC_BASE_URL = os.getenv('R2_PUBLIC_BASE_URL')
+    R2_BUCKET_NAME = os.getenv('R2_BUCKET_NAME')
+    
 

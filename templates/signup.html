@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="signup.css">
+    <link rel="stylesheet" href="/static/signup.css">
 </head>
 
 <body>
@@ -14,9 +14,9 @@
         <div class="header">
             <h1>Create an Account</h1>
             Already have an account?
-            <a href="Login.html">Log in</a>
+            <a href="{{ url_for('auth.login_page') }}">Log in</a>
         </div>
-        <form action="post">
+        <form  method="POST" action="{{ url_for('auth.signup') }}">
             <div>
                 <input type="text" id="firstName" name="firstName" placeholder="first name" required>
                 <input type="text" id="lastName" name="lastName" placeholder="last name" required>
@@ -33,7 +33,7 @@
             </div>
             <div>
                 <button class="google-btn" onclick="googleLogin()">
-                    <img src="google.png" alt="Google" />
+                    <img src="/static/google.png" alt="Google" />
                     <span>Sign up with Google</span>
                 </button>
 
@@ -42,7 +42,7 @@
             <button type="button" onclick="signup()"> Create account</button>
         </form>
     </div>
-    <script src="script.js"></script>
+    <script src="/static/script.js"></script>
 </body>
 
 </html>
