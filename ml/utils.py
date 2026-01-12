@@ -1,3 +1,6 @@
+import requests
+import time
+from config import Config
 from PIL import Image
 from io import BytesIO
 

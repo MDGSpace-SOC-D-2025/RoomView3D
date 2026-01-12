@@ -50,4 +50,25 @@ class CloudflareR2:
                 'success': False,
                 'error': str(e) 
             }
+    
+    def download_image(self, s3_key):
+        try:
+            print(f"Downloading from R2: {s3_key}")
+            
+            response = self.s3_client.get_object(
+                Bucket=self.bucket_name,
+                Key=s3_key
+            )
+            image_data = response['Body'].read()
+            
+            print(f"Download successful: {len(image_data)} bytes")
+            return image_data
+            
+        except ClientError as e:
+            print(f"R2 Download Error: {e}")
+            return None
+        except Exception as e:
+            print(f"Unexpected Error: {e}")
+            return None
+       
 r2_service = CloudflareR2()

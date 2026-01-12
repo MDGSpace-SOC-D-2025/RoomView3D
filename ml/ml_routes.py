@@ -2,6 +2,9 @@ import uuid
 from flask import Blueprint, request, jsonify
 from ml.cloudflare import r2_service
 from ml.utils import validate_image, get_image_format, get_uploaded_file, check_file_size
+from config import Config
+from ml.grounding_dino import grounding_dino
+from ml.image_utils import image_processor
 
 ml_bp = Blueprint('ml', __name__, url_prefix='/api/ml')
 
@@ -59,3 +62,78 @@ def upload_image():
             'success': False,
             'error': f'Server error: {str(e)}'
         }), 500
+
+
+
+@ml_bp.route('/detect', methods=['POST'])
+def detect_furniture():
+    try:
+        if grounding_dino is None or not grounding_dino.is_loaded():
+            return jsonify({
+                'success': False,
+                'error': 'Grounding DINO model not loaded. Please check server logs.'
+            }), 500
+
+        data = request.get_json()
+        
+        if not data or 'image_key' not in data:
+            return jsonify({
+                'success': False,
+                'error': 'Please provide image_key in request body'
+            }), 400
+        
+        image_key = data['image_key']
+        confidence_threshold = data.get('confidence_threshold', 0.3)
+        
+        print(f"Detection request for: {image_key}")
+        image_bytes = r2_service.download_image(image_key)
+        
+        if image_bytes is None:
+            return jsonify({
+                'success': False,
+                'error': 'Failed to download image from R2'
+            }), 500
+    
+        processed = image_processor.preprocess_for_detection(
+            image_bytes,
+            resize=True,
+            enhance=False
+        )
+        
+        if processed is None:
+            return jsonify({
+                'success': False,
+                'error': 'Failed to preprocess image'
+            }), 500
+        
+        pil_image = processed['pil_image']
+        
+        print(f"Image size: {processed['original_size']} → {processed['processed_size']}")
+        
+
+        detections = grounding_dino.detect(
+            pil_image,
+            confidence_threshold=confidence_threshold
+        )
+        
+        # Step 5: Response return karo
+        return jsonify({
+            'success': True,
+            'message': f'Detected {len(detections)} objects',
+            'detections': detections,
+            'total_count': len(detections),
+            'image_info': {
+                'original_size': processed['original_size'],
+                'processed_size': processed['processed_size']
+            }
+        }), 200
+        
+    except Exception as e:
+        print(f"Detection API Error: {e}")
+        import traceback
+        traceback.print_exc()
+        return jsonify({
+            'success': False,
+            'error': f'Server error: {str(e)}'
+        }), 500
+

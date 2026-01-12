@@ -21,5 +21,6 @@ class Config:
     R2_ENDPOINT_URL = os.getenv('R2_ENDPOINT_URL')
     R2_PUBLIC_BASE_URL = os.getenv('R2_PUBLIC_BASE_URL')
     R2_BUCKET_NAME = os.getenv('R2_BUCKET_NAME')
-    
-
+    HF_TOKEN = os.getenv('HF_TOKEN')
+    HF_API_URL = os.getenv('HF_API_URL')
+    FURNITURE_LIST = os.getenv('FURNITURE_PROMPT')
