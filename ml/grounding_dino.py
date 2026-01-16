@@ -29,8 +29,7 @@ class GroundingDINO:
             if prompt is None:
                 prompt = self.default_prompt
             
-            print(f"Detecting with prompt: {prompt[:50]}...")
-            print(f"Confidence threshold: {confidence_threshold}")
+            print("Detecting")
         
             inputs = self.processor(
                 images=pil_image,
@@ -86,27 +85,4 @@ class GroundingDINO:
             print(f"Detection error: {e}")
             return []
     
-    def detect_with_categories(self, pil_image, confidence_threshold=0.3):
-        all_detections = self.detect(pil_image, confidence_threshold=confidence_threshold)
-        categorized = {}
-        
-        for detection in all_detections:
-            label = detection['label']
-            
-            if label not in categorized:
-                categorized[label] = []
-            
-            categorized[label].append(detection)
-        categorized['total_count'] = len(all_detections)
-        
-        return categorized
-    
-    def is_loaded(self):
-        return self.model is not None
-
-try:
-    grounding_dino = GroundingDINO()
-except Exception as e:
-    print(f"Failed to initialize Grounding DINO: {e}")
-    grounding_dino = None
-
+grounding_dino = GroundingDINO()

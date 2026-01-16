@@ -25,7 +25,7 @@ def validate_image(file_data):
         return False, 'Uploaded file is not a valid image'
 
 
-def get_image_format(file_data, allowed_ext):
+def get_image_format(file_data, allowed_ext = {'png', 'jpg', 'jpeg', 'webp'}):
     img = Image.open(BytesIO(file_data))
     image_format = img.format.lower()
 

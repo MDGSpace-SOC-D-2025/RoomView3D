@@ -17,7 +17,7 @@ class CloudflareR2:
     
     def upload_image(self, file_data, original_filename):
         try:
-            timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')    
+            timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
             s3_key = f"images/{timestamp}{original_filename}"
            
             print(f"Uploading to R2: {s3_key}")
