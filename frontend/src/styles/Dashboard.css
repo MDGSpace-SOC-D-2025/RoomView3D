@@ -1,0 +1,87 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.dashboard-wrapper {
+  width: 100vw;
+  height: 100vh;
+  background: url("/My.jpeg") center/cover no-repeat;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Blur + dark overlay */
+.dashboard-overlay {
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(6px);
+  background: rgba(0, 0, 0, 0.65);
+  z-index: 1;
+}
+
+.dashboard-content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 0px;
+  color: #ffffff;
+}
+
+.dashboard-title {
+  font-size: 48px;
+  letter-spacing: 3px;
+  margin-bottom: 60px;
+}
+
+.dashboard-logo {
+  width: 820px; 
+  filter: drop-shadow(0 6px 20px rgba(0, 0, 0, 0.7));
+  align-items: center;
+}
+
+
+.dashboard-cards {
+  display: flex;
+  gap: 40px;
+}
+
+/* Big cards */
+.dashboard-card {
+  width: 320px;
+  height: 200px;
+  background: rgba(30, 30, 30, 0.9);
+  border-radius: 18px;
+  padding: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.dashboard-card h2 {
+  font-size: 26px;
+  margin-bottom: 14px;
+  text-align: center
+}
+
+.dashboard-card p {
+  font-size: 18px;
+  color: #cfcfcf;
+  line-height: 1.4;
+  text-align: center
+}
+
+.dashboard-card:hover {
+  transform: translateY(-8px);
+  background: rgba(50, 50, 50, 0.95);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+}

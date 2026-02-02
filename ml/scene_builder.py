@@ -16,7 +16,7 @@ class SceneBuilder:
     
     def __init__(self):
         # Default camera parameters (assumed)
-        self.focal_length = 525.0  # Typical for smartphone cameras
+        self.focal_length = 1825.0  # Typical for smartphone cameras
         self.default_room_height = 2.7  # meters 
     
     def estimate_room_dimensions(self, depth_map, image_width):
@@ -43,7 +43,7 @@ class SceneBuilder:
             print(f"Error estimating room dimensions: {e}")
             # Fallback default room
             return {
-                'width': 5.0,
+                'width': 5.0,   
                 'height': 2.7,
                 'depth': 6.0
             }

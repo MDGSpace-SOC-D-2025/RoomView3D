@@ -1,0 +1,23 @@
+.divider-container {
+  position: relative;
+  margin: 24px 0;
+  text-align: center;
+}
+
+.divider-line {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.divider-text {
+  position: relative;
+  padding: 16px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 14px;
+  z-index: 1;
+}

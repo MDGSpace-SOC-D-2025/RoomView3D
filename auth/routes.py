@@ -52,11 +52,6 @@ def token_required(f):
     return decorated
 
 
-# TRADITIONAL AUTH ROUTES 
-@auth_bp.route("/signup", methods=["GET"])
-def signup_page():
-    return render_template("signup.html")
-
 @auth_bp.route('/signup', methods=['POST'])
 def signup():
 
@@ -131,10 +126,6 @@ def signup():
         return jsonify({
             'error': 'Internal server error'
         }), 500
-
-@auth_bp.route("/login", methods=["GET"])
-def login_page():
-    return render_template("Login.html")
 
 @auth_bp.route('/login', methods=['POST'])
 def login():
@@ -251,7 +242,7 @@ def google_callback():
             # User exists, log them in
             token = create_access_token(user['id'], user['email'])
             # Frontend will extract token from URL and store it
-            frontend_url = f'http://127.0.0.1:5500/Frontend/index.html?token={token}'
+            frontend_url = f'http://localhost:3000/?token={token}'
             return redirect(frontend_url) 
         
         # Check if user exists by email (signed up with email/password)
@@ -267,7 +258,7 @@ def google_callback():
                 }), 500
             
             token = create_access_token(user['id'], user['email'])
-            frontend_url = f'http://127.0.0.1:5500/Frontend/index.html?token={token}'
+            frontend_url = f'http://localhost:3000/?token={token}'
             return redirect(frontend_url)
         
         # User doesn't exist, create new account
@@ -287,7 +278,7 @@ def google_callback():
         
         # Generate token and redirect
         token = create_access_token(user['id'], user['email'])
-        frontend_url = f'http://127.0.0.1:5500/Frontend/index.html?token={token}'
+        frontend_url = f'http://localhost:3000/?token={token}'
         return redirect(frontend_url)
         
     except Exception as e:

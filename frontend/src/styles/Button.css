@@ -1,0 +1,41 @@
+.glass-button {
+  width: 100%;
+  padding: 16px;
+  border-radius: 12px;
+  font-weight: 500;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  transform: scale(1);
+}
+
+.glass-button:hover {
+  transform: scale(1.02);
+}
+
+.glass-button:active {
+  transform: scale(0.98);
+}
+
+.glass-button-primary {
+  background: #3b82f6;
+  color: white;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+}
+
+.glass-button-primary:hover {
+  background: #2563eb;
+}
+
+.glass-button-secondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.glass-button-secondary:hover {
+  background: rgba(255, 255, 255, 0.2);
+}

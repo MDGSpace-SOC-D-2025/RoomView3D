@@ -1,0 +1,20 @@
+.furniture-dropdown {
+  position: absolute;
+  top: 40px;
+  left: 8px;
+  z-index: 10;
+}
+
+.dropdown-btn {
+  padding: 8px 14px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.dropdown-menu {
+  margin-top: 5px;
+  background: white;
+  border: 1px solid #ccc;
+  width: 180px;
+}

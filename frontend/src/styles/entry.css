@@ -1,0 +1,89 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+.entry-page {
+  width: 100vw;
+  height: 100vh;
+  background: url("/My.jpeg") center/cover no-repeat;
+  position: relative;
+}
+
+.entry-page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(10px);
+}
+
+.entry-container {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.entry-title {
+  font-size: 48px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  margin-bottom: 50px;
+}
+
+.entry-card {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 35px 40px;
+  width: 380px;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.entry-card p {
+  font-size: 14px;
+  opacity: 0.8;
+  margin-bottom: 25px;
+}
+
+.entry-card input {
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+}
+
+.entry-card input::placeholder {
+  color: rgba(255,255,255,0.6);
+}
+
+.entry-card button {
+  margin-top: 10px;
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  background: #ffffff;
+  color: #000;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.entry-card button:hover {
+  background: #e5e5e5;
+}

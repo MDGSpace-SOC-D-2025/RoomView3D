@@ -7,7 +7,7 @@ from config import Config
 
 def create_app():
     app = Flask(__name__)
-    CORS(app)
+    CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}}, supports_credentials=True)
     app.config['SECRET_KEY'] = Config.FLASK_SECRET_KEY
     app.register_blueprint(auth_bp)
     app.register_blueprint(ml_bp)

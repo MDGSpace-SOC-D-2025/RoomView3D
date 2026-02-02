@@ -1,0 +1,21 @@
+.auth-toggle-text {
+  text-align: center;
+  margin-top: 24px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+}
+
+.auth-toggle-link {
+  color: #60a5fa;
+  font-weight: 500;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  padding: 0;
+  font-size: 14px;
+}
+
+.auth-toggle-link:hover {
+  color: #93c5fd;
+}

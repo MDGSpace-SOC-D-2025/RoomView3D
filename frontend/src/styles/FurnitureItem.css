@@ -1,0 +1,22 @@
+.furniture-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  cursor: pointer;
+}
+
+.furniture-item:hover {
+  background-color: #2996b1;
+}
+
+.furniture-image {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.furniture-title {
+  font-size: 15px;
+  font-weight: 600;
+}

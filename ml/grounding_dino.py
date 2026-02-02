@@ -20,7 +20,7 @@ class GroundingDINO:
             self.model = None
             self.processor = None
     
-    def detect(self, pil_image, prompt=None, confidence_threshold=0.3):
+    def detect(self, pil_image, prompt=None, confidence_threshold=0.60):
         if self.model is None:
             print("Model not loaded")
             return []

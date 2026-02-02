@@ -12,7 +12,7 @@ def process_complete():
         file, error = get_uploaded_file(request)
         if error: return jsonify({'success': False, 'error': error}), 400
         
-        user_id = request.form.get('user_id', 'default-user')
+        user_id = request.form.get('user_id', 'default')
         project_name = request.form.get('project_name', 'My Room')
 
         # Service ko call karna (Pura kaam yahan ho raha hai)
@@ -24,6 +24,7 @@ def process_complete():
         return jsonify({
             'success': True,
             'project_id': result['project_id'],
+            'scene': result['scene'],
             'stats': {
                 'furniture_count': len(result['detections']),
                 'room_dimensions': result['scene']['room']['dimensions']
@@ -66,7 +67,7 @@ def get_project(project_id):
         }), 200
         
     except Exception as e:
-        print(f"+Error fetching project: {e}")
+        print(f"Error fetching project: {e}")
         return jsonify({'success': False, 'error': str(e)}), 500
 
 @ml_bp.route('/projects/<user_id>', methods=['GET'])

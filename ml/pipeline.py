@@ -23,7 +23,7 @@ def run_room_pipeline(file_data, user_id, project_name):
         processed = ImageProcessor.preprocess_for_detection(file_data, resize=True)
         pil_img = processed['pil_image']
         
-        detections = grounding_dino.detect(pil_img, confidence_threshold=0.3)
+        detections = grounding_dino.detect(pil_img, confidence_threshold=0.4)
         if detections: DetectionDB.save_batch(project_id, detections)
         
         depth_result = depth_estimator.estimate_depth(pil_img)
