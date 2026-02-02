@@ -74,9 +74,10 @@ class GroundingDINO:
                     'bbox_normalized': normalized_bbox,
                     'bbox_absolute': absolute_bbox
                 }
+            if detection['label'] in Config.FURNITURE_LIST:    
+                detections.append(detection)         
+                print(f"Detected {len(detections)} objects")
                 
-                detections.append(detection)     
-            print(f"Detected {len(detections)} objects")
             detections.sort(key=lambda x: x['confidence'], reverse=True)
             
             return detections

@@ -56,10 +56,10 @@ export const AuthPage = () => {
 
           <Divider />
 
-          <GoogleAuthButton
+          {/* <GoogleAuthButton
             onGoogleAuth={handleGoogleAuth}
             isSignUp={true}
-          />
+          /> */}
 
           <p className="auth-toggle-text">
             Already have an account? {' '}
@@ -80,10 +80,10 @@ export const AuthPage = () => {
 
             <Divider />
 
-            <GoogleAuthButton
+            {/* <GoogleAuthButton
               onGoogleAuth={handleGoogleAuth}
               isSignUp={false}
-            />
+            /> */}
 
             <p className="auth-toggle-text">
               Don't have an account?{' '}

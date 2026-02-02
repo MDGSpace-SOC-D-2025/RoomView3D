@@ -193,7 +193,6 @@ def google_login():
     auth_url = get_google_auth_url()
     return redirect(auth_url)
 
-
 @auth_bp.route('/google/callback')
 def google_callback():
 
@@ -283,7 +282,7 @@ def google_callback():
         
     except Exception as e:
         print(f"Google callback error: {e}")
-        return jsonify({
+        return jsonify ({
             'error': 'Internal server error'
         }), 500
 

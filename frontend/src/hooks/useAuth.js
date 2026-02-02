@@ -44,6 +44,7 @@ export const useAuth = () => {
       const data = await response.json();
       if (response.ok) {
         localStorage.setItem('token', data.token);
+        localStorage.setItem("USER_ID", data.user.id); 
         alert('Login Successful!');
         navigate("/dashboard");
       } else {
